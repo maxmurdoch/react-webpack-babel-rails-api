@@ -1,8 +1,7 @@
-require('./assets/app.css');
-require('./assets/menu.css');
-require('./assets/blabs.css');
+import './assets/app.css';
+import './assets/menu.css';
+import './assets/blabs.css';
+import React from 'react';
+import BlabApp from './components/layout/App.jsx';
 
-var React = require('react');
-var App = require('./components/layout/App.jsx');
-
-React.render(<App/>, document.body);
+React.render(<BlabApp/>, document.body);

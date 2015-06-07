@@ -1,8 +1,17 @@
-var React = require('react');
-var Blab = require('./Blab.jsx');
+import React from 'react';
+import Blab from './Blab.jsx';
 
-module.exports = React.createClass({
-  render: function() {
+export default class BlabsList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  static propTypes() {
+    return {
+      content: React.PropTypes.string,
+      data: React.PropTypes.array,
+    };
+  }
+  render() {
     console.log(this.props.data);
     var blabs = this.props.data.map(function(blab) {
       return (
@@ -16,4 +25,4 @@ module.exports = React.createClass({
       </ul>
     );
   }
-});
+}
