@@ -1,12 +1,11 @@
 import React from 'react';
-console.log(React);
 
 export default class Blab extends React.Component {
+  displayName = 'Blab';
   constructor(props) {
     super(props);
   }
-
-  static propTypes() { return { content: React.PropTypes.array }; }
+  static propTypes = { content: React.PropTypes.string };
 
   render() {
     return (

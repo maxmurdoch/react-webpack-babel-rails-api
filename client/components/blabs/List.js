@@ -1,7 +1,8 @@
 import React from 'react';
-import Blab from './Blab.jsx';
+import Blab from './Blab';
 
-export default class BlabsList extends React.Component {
+export default class List extends React.Component {
+  displayName = 'List';
   constructor(props) {
     super(props);
   }
