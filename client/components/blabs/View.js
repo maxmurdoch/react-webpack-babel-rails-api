@@ -2,7 +2,6 @@ import React from 'react';
 import List from './List';
 
 export default class View extends React.Component {
-  displayName = 'View';
   constructor(props) {
     super(props);
     this.state = { data: [] };

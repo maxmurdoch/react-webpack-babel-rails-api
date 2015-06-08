@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class Blab extends React.Component {
-  displayName = 'Blab';
   constructor(props) {
     super(props);
   }
