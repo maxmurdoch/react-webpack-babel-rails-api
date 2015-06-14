@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import reqwest from 'reqwest';
 import Menu from './Menu';
 import Uri from 'jsuri';
 import {RouteHandler} from 'react-router';
 
-export default class App extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { showMenu: false, signedIn: false, currentUser: { handle: '' }};
   };
   static defaultProps = { origin: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '' };
-  static propTypes = { origin: React.PropTypes.string };
+  static propTypes = { origin: PropTypes.string };
 
   componentWillMount() {
     const jwt = new Uri(window.location.search).getQueryParamValue('jwt');
@@ -28,12 +28,11 @@ export default class App extends React.Component {
 
   handleMenuClick() {
     this.setState({ showMenu: !this.state.showMenu });
-    console.log(React.findDOMNode(Menu));
   }
 
   readFromAPI(url, successFn) {
     reqwest({
-      url: url,
+      url,
       type: 'json',
       method: 'get',
       contentType: 'application/json',
@@ -46,8 +45,25 @@ export default class App extends React.Component {
     });
   }
 
+  writeToAPI({ method = 'POST', url, data, successFn }) {
+    reqwest({
+      url,
+      data,
+      method,
+      type: 'json',
+      contentType: 'application/json',
+      headers: { Authorization: sessionStorage.getItem('jwt') },
+      success: successFn,
+      error: (error) => {
+        console.error(url, error.response);
+        window.location.pathname = '/';
+      },
+    });
+  }
+
   render() {
-    let menu = this.state.showMenu ? 'show-menu' : 'hide-menu';
+    const menu = this.state.showMenu ? 'show-menu' : 'hide-menu';
+
     return (
       <div id="app" className={menu}>
         <Menu origin={this.props.origin} sendMenuClick={::this.handleMenuClick} signedIn={this.state.signedIn} />

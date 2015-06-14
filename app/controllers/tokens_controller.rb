@@ -13,10 +13,11 @@ class TokensController < ApplicationController
       user = User.find_or_create_by(uid: access_token.params[:user_id]) do |u|
         u.handle = access_token.params[:screen_name]
       end
-      jwt = JWT.encode({uid: user.uid, exp: 1.day.fomr_now.to_i},
+      jwt = JWT.encode({uid: user.uid, exp: 1.day.from_now.to_i},
                        Rails.application.secrets.secret_key_base)
       redirect_to ENV['ORIGIN'] + "?jwt=#{jwt}"
-  else
-    redirect_to ENV['ORIGIN']
+    else
+      redirect_to ENV['ORIGIN']
+    end
   end
 end

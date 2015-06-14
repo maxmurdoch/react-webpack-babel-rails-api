@@ -1,3 +1,3 @@
 class Oauth < ActiveRecord::Base
-  validates_presence_of :uid, :handle
+  validates_presence_of :token, :secret
 end
