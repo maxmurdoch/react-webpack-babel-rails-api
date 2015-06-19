@@ -43,6 +43,7 @@
     "no-debugger": 2,
     "no-dupe-args": 2,
     "no-dupe-keys": 2,
+    "no-alert": 0,
     "no-duplicate-case": 2,
     "new-cap": [2, {
       capIsNewExceptions: [

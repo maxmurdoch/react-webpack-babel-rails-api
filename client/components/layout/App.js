@@ -45,7 +45,7 @@ export default class App extends Component {
     });
   }
 
-  writeToAPI({ method = 'POST', url, data, successFn }) {
+  writeToAPI({ method = 'post', url, data, successFn }) {
     reqwest({
       url,
       data,
@@ -68,7 +68,8 @@ export default class App extends Component {
       <div id="app" className={menu}>
         <Menu origin={this.props.origin} sendMenuClick={::this.handleMenuClick} signedIn={this.state.signedIn} />
         <div id="content">
-          <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} signedIn={this.state.signedIn} />
+          <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI}
+          currentUser={this.state.currentUser} signedIn={this.state.signedIn} />
         </div>
       </div>
     );

@@ -9,9 +9,9 @@ export default class List extends React.Component {
                        data: React.PropTypes.array, };
 
   render() {
-    var blabs = this.props.data.map(function(blab) {
+    var blabs = this.props.data.map((blab) => {
       return (
-        <Blab key={blab.id} content={blab.content} />
+        <Blab key={blab.id} content={blab.content} author={blab.user.handle} />
       );
     });
 

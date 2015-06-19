@@ -11,7 +11,7 @@ config.plugins.push(
     'process.env': {
       NODE_ENV: JSON.stringify('development'),
     },
-  });
+  })
 );
 
 module.exports = config;
