@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default class Menu extends Component {
   static propTypes = { sendMenuClick: PropTypes.func,
-                       signedIn: PropTypes.boolean,
+                       signedIn: PropTypes.bool,
                        origin: PropTypes.string, };
 
   handleSignOutLink() {
